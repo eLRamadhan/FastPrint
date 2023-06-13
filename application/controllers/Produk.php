@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Produk extends CI_Controller {
+class Produk extends CI_Controller
+{
 
 	function __construct()
 	{
@@ -16,7 +17,7 @@ class Produk extends CI_Controller {
 		} else {
 			$data['produk'] = $this->data->read('produk', '*', ['status' => $_GET['stat']])->result();
 		}
-		$this->load->view('produk',$data);
+		$this->load->view('produk', $data);
 	}
 
 	function add()
@@ -31,7 +32,7 @@ class Produk extends CI_Controller {
 	function getdata()
 	{
 		$id = $_POST['id_produk'];
-		$data = $this->data->read('produk', '*', ['id_produk' => $id], 'null', 'null');
+		$data = $this->data->read('produk', '*', ['id_produk' => $id]);
 
 		echo json_encode($data->row());
 	}
